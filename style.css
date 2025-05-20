@@ -296,6 +296,7 @@ section h2 {
   width: auto;
   text-align: left;
   align-self: center;       /* Center paragraph vertically to the image */
+  font-size: 1.3em;         /* Increased font size for better readability */
 }
 
 /* Responsive: stack everything on small screens */
