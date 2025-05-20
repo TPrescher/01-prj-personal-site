@@ -2,10 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Personal Site</title>
+  <title>My Portfolio</title>
+  <!-- Link to Montserrat font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <!-- Link to FontAwesome for skill icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Add your HTML content here -->
+  <!-- Fixed Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Empowering change. Inspiring progress. Moving forward with purpose.</p>
+    <a href="#projects" class="cta-btn">View My Work</a>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <!-- Profile image with correct path and class -->
+    <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="profile-img">
+    <p>
+      "Hi! I'm Tim Prescher, a strategic entrepreneur driven by a passion for building impactful businesses. With a background in leadership and business development, I'm now exploring web design to connect powerful ideas with modern, user-focused digital experiences.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <!-- Business-focused skills list with FontAwesome icons -->
+    <ul class="skills-list">
+      <li><i class="fas fa-chart-line"></i> Business Strategy &amp; Leadership</li>
+      <li><i class="fas fa-code"></i> Web Development (Learning)</li>
+      <li><i class="fas fa-network-wired"></i> Business Systems Integration</li>
+      <li><i class="fas fa-project-diagram"></i> Project Management</li>
+      <li><i class="fas fa-database"></i> Data Analysis (Learning)</li>
+      <li><i class="fas fa-bullseye"></i> Strategic Planning &amp; Execution</li>
+    </ul>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <!-- Project Card 1 -->
+    <div class="project">
+      <img src="img/personal_portfolio.png" alt="Personal Portfolio Website thumbnail" class="project-thumbnail">
+      <div>
+        <h3>Personal Portfolio Website</h3>
+        <p>A single-page website designed to showcase my professional background and ongoing web development projects.</p>
+        <a href="#" class="project-link" target="_blank">View Project</a>
+      </div>
+    </div>
+    <!-- Project Card 2 -->
+    <div class="project">
+      <!-- Fixed typo in file name to match actual image -->
+      <img src="img/Intel_Comming_Soon.png" alt="Intel's Sustainability Journey thumbnail" class="project-thumbnail">
+      <div>
+        <h3>Intel's Sustainability Journey</h3>
+        <p>A localization project focused on implementing RTL layout adaptation and accessibility enhancements for Intel’s website.</p>
+        <a href="#" class="project-link" target="_blank">View Project</a>
+      </div>
+    </div>
+    <!-- Project Card 3 -->
+    <div class="project">
+      <!-- Added thumbnail for Game Concept for charity: water -->
+      <img src="img/Charity_wtr.png" alt="Game Concept for charity: water thumbnail" class="project-thumbnail">
+      <div>
+        <h3>Game Concept for charity: water</h3>
+        <p>A game concept aimed at raising awareness for clean water initiatives, integrating charity: water branding and user interaction.</p>
+        <a href="#" class="project-link" target="_blank">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <!-- Simple contact form -->
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  <!-- Add a footer for the copyright -->
+  <footer style="text-align:center; color:#aaa; padding: 20px 0;">
+    &copy; 2025 Tim Prescher. All rights reserved.
+  </footer>
 </body>
 </html>
