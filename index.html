@@ -3,109 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <title>My Portfolio</title>
-  <!-- Link to Montserrat font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <!-- Link to Montserrat font from Google F      <!-- Project Card 2 -->
+      <div class="bg-dark-bg rounded-lg p-6 flex flex-col md:flex-row items-start gap-6 transition-all duration-300 hover:shadow-lg hover:shadow-accent-amber/20">
+        <!-- Fixed typo in file name to match actual image -->
+        <img src="img/Intel_Comming_Soon.png" alt="Intel's Sustainability Journey thumbnail" class="w-full md:w-40 h-32 md:h-32 rounded-lg object-cover border-2 border-accent-orange flex-shrink-0">
+        <div class="flex-1">
+          <h3 class="text-xl font-bold text-text-light mb-3">Intel's Sustainability Journey</h3>
+          <p class="text-text-light mb-4 leading-relaxed">A localization project focused on implementing RTL layout adaptation and accessibility enhancements for Intel's website.</p>
+          <a href="#" class="inline-block px-6 py-2 bg-accent-amber text-section-bg rounded-full font-bold transition-all duration-300 hover:bg-accent-orange hover:text-white" target="_blank">View Project</a>
+        </div>
+      </div> <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <!-- Link to FontAwesome for skill icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Custom Tailwind configuration to match your color scheme
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#181f2b',
+            'section-bg': '#232a36',
+            'accent-orange': '#ff5e3a',
+            'accent-amber': '#ffb347',
+            'text-light': '#f5f5f5',
+            'text-muted': '#aaa'
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Keep minimal custom CSS for background images -->
+  <style>
+    .hero-bg {
+      background-image: linear-gradient(rgba(24, 31, 43, 0.6), rgba(24, 31, 43, 0.6)), url('img/city_dark.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .section-bg {
+      background-image: url('img/sharplines_background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .body-bg {
+      background-image: linear-gradient(rgba(24, 31, 43, 0.7), rgba(24, 31, 43, 0.7)), url('img/Geometric_background.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
 </head>
-<body>
+<body class="font-montserrat text-text-light bg-dark-bg body-bg pt-20">
   <!-- Fixed Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <nav class="fixed top-0 w-full bg-section-bg shadow-lg z-50">
+    <ul class="flex justify-center items-center gap-20 list-none m-0 px-5">
+      <li><a href="#hero" class="text-text-light font-bold py-7 px-4 inline-block transition-colors duration-300 hover:text-accent-amber">Home</a></li>
+      <li><a href="#about" class="text-text-light font-bold py-7 px-4 inline-block transition-colors duration-300 hover:text-accent-amber">About Me</a></li>
+      <li><a href="#skills" class="text-text-light font-bold py-7 px-4 inline-block transition-colors duration-300 hover:text-accent-amber">Skills</a></li>
+      <li><a href="#projects" class="text-text-light font-bold py-7 px-4 inline-block transition-colors duration-300 hover:text-accent-amber">Projects</a></li>
+      <li><a href="#contact" class="text-text-light font-bold py-7 px-4 inline-block transition-colors duration-300 hover:text-accent-amber">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Empowering change. Inspiring progress. Moving forward with purpose.</p>
-    <a href="#projects" class="cta-btn">View My Work</a>
+  <section id="hero" class="hero-bg h-screen flex flex-col items-center justify-center text-center px-5 relative">
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-wide">Welcome to My Portfolio</h1>
+      <p class="text-lg md:text-2xl text-accent-orange mb-8 max-w-2xl">Empowering change. Inspiring progress. Moving forward with purpose.</p>
+      <a href="#projects" class="inline-block mt-6 px-9 py-4 bg-accent-orange text-white text-lg font-bold rounded-full transition-all duration-300 hover:bg-accent-amber hover:text-section-bg shadow-lg">View My Work</a>
+    </div>
   </section>
 
   <!-- About Me Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <!-- Profile image with correct path and class -->
-    <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="profile-img">
-    <p>
-      Hi! I'm Tim Prescher, a strategic entrepreneur driven by a passion for building impactful businesses. With a background in leadership and business development, I'm now exploring web design to connect powerful ideas with modern, user-focused digital experiences.
-    </p>
+  <section id="about" class="max-w-6xl mx-auto my-20 p-10 bg-section-bg section-bg rounded-lg shadow-xl">
+    <h2 class="text-3xl font-bold text-accent-amber mb-8 text-center">About Me</h2>
+    <div class="flex flex-col md:flex-row items-center gap-8">
+      <!-- Profile image with responsive sizing -->
+      <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-accent-amber object-cover shadow-lg flex-shrink-0">
+      <div class="flex-1 text-center md:text-left">
+        <p class="text-lg md:text-xl leading-relaxed">
+          Hi! I'm Tim Prescher, a strategic entrepreneur driven by a passion for building impactful businesses. With a background in leadership and business development, I'm now exploring web design to connect powerful ideas with modern, user-focused digital experiences.
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
+  <section id="skills" class="max-w-6xl mx-auto my-20 p-10 bg-section-bg section-bg rounded-lg shadow-xl">
+    <h2 class="text-3xl font-bold text-accent-amber mb-8 text-center">Skills</h2>
     <!-- Business-focused skills list with FontAwesome icons -->
-    <ul class="skills-list">
-      <li><i class="fas fa-chart-line"></i> Business Strategy &amp; Leadership</li>
-      <li><i class="fas fa-code"></i> Web Development (Learning)</li>
-      <li><i class="fas fa-network-wired"></i> Business Systems Integration</li>
-      <li><i class="fas fa-project-diagram"></i> Project Management</li>
-      <li><i class="fas fa-database"></i> Data Analysis (Learning)</li>
-      <li><i class="fas fa-bullseye"></i> Strategic Planning &amp; Execution</li>
-    </ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-chart-line text-2xl mr-4"></i>
+        <span>Business Strategy & Leadership</span>
+      </div>
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-code text-2xl mr-4"></i>
+        <span>Web Development (Learning)</span>
+      </div>
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-network-wired text-2xl mr-4"></i>
+        <span>Business Systems Integration</span>
+      </div>
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-project-diagram text-2xl mr-4"></i>
+        <span>Project Management</span>
+      </div>
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-database text-2xl mr-4"></i>
+        <span>Data Analysis (Learning)</span>
+      </div>
+      <div class="bg-dark-bg text-accent-amber px-6 py-4 rounded-full font-semibold flex items-center transition-all duration-300 hover:bg-accent-amber hover:text-section-bg hover:shadow-lg">
+        <i class="fas fa-bullseye text-2xl mr-4"></i>
+        <span>Strategic Planning & Execution</span>
+      </div>
+    </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <!-- Project Card 1 -->
-    <div class="project">
-      <img src="img/personal_portfolio.png" alt="Personal Portfolio Website thumbnail" class="project-thumbnail">
-      <div>
-        <h3>Personal Portfolio Website</h3>
-        <p>A single-page website designed to showcase my professional background and ongoing web development projects.</p>
-        <a href="#" class="project-link" target="_blank">View Project</a>
+  <section id="projects" class="max-w-6xl mx-auto my-20 p-10 bg-section-bg section-bg rounded-lg shadow-xl">
+    <h2 class="text-3xl font-bold text-accent-amber mb-12 text-center">My Work &amp; Projects</h2>
+    <!-- Responsive grid for project cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Project Card 1: Personal Portfolio -->
+      <div class="group relative bg-dark-bg rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-amber/20">
+        <!-- Project Image -->
+        <img src="img/personal_portfolio.png" alt="Personal Portfolio Website thumbnail" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+        <!-- Content Body -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-text-light mb-2">Personal Portfolio Website</h3>
+          <p class="text-text-light/80 mb-4 text-sm leading-relaxed">A single-page website designed to showcase my professional background and ongoing web development projects.</p>
+          <!-- Tech Stack Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">HTML</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">CSS</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+          </div>
+          <a href="#" class="inline-block text-accent-amber font-bold transition-colors duration-300 group-hover:text-accent-orange" target="_blank">View Project &rarr;</a>
+        </div>
       </div>
-    </div>
-    <!-- Project Card 2 -->
-    <div class="project">
-      <!-- Fixed typo in file name to match actual image -->
-      <img src="img/Intel_Comming_Soon.png" alt="Intel's Sustainability Journey thumbnail" class="project-thumbnail">
-      <div>
-        <h3>Intel's Sustainability Journey</h3>
-        <p>A localization project focused on implementing RTL layout adaptation and accessibility enhancements for Intel’s website.</p>
-        <a href="#" class="project-link" target="_blank">View Project</a>
+
+      <!-- Project Card 2: Intel's Sustainability Journey -->
+      <div class="group relative bg-dark-bg rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-amber/20">
+        <!-- Project Image -->
+        <img src="img/Intel_Comming_Soon.png" alt="Intel's Sustainability Journey thumbnail" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+        <!-- Content Body -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-text-light mb-2">Intel's Sustainability Journey</h3>
+          <p class="text-text-light/80 mb-4 text-sm leading-relaxed">A localization project focused on implementing RTL layout adaptation and accessibility enhancements for Intel’s website.</p>
+          <!-- Tech Stack Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">Localization</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">RTL Layout</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">Accessibility</span>
+          </div>
+          <a href="#" class="inline-block text-accent-amber font-bold transition-colors duration-300 group-hover:text-accent-orange" target="_blank">View Project &rarr;</a>
+        </div>
       </div>
-    </div>
-    <!-- Project Card 3 -->
-    <div class="project">
-      <!-- Added thumbnail for Game Concept for charity: water -->
-      <img src="img/Charity_wtr.png" alt="Game Concept for charity: water thumbnail" class="project-thumbnail">
-      <div>
-        <h3>Game Concept for charity: water</h3>
-        <p>A game concept aimed at raising awareness for clean water initiatives, integrating charity: water branding and user interaction.</p>
-        <a href="#" class="project-link" target="_blank">View Project</a>
+
+      <!-- Project Card 3: Game Concept for charity: water -->
+      <div class="group relative bg-dark-bg rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-amber/20">
+        <!-- Project Image -->
+        <img src="img/Charity_wtr.png" alt="Game Concept for charity: water thumbnail" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+        <!-- Content Body -->
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-text-light mb-2">Game Concept for charity: water</h3>
+          <p class="text-text-light/80 mb-4 text-sm leading-relaxed">A game concept aimed at raising awareness for clean water initiatives, integrating branding and user interaction.</p>
+          <!-- Tech Stack Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">Game Design</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">UI/UX</span>
+            <span class="bg-section-bg text-accent-amber text-xs font-semibold px-3 py-1 rounded-full">Branding</span>
+          </div>
+          <a href="#" class="inline-block text-accent-amber font-bold transition-colors duration-300 group-hover:text-accent-orange" target="_blank">View Project &rarr;</a>
+        </div>
       </div>
+
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
+  <section id="contact" class="max-w-6xl mx-auto my-20 p-10 bg-section-bg section-bg rounded-lg shadow-xl">
+    <h2 class="text-3xl font-bold text-accent-amber mb-8 text-center">Contact</h2>
     <!-- Simple contact form -->
-    <form>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+    <form class="max-w-2xl mx-auto space-y-6">
+      <div>
+        <label for="name" class="block text-accent-amber font-semibold mb-2">Name</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-dark-bg border border-section-bg rounded-lg text-text-light focus:outline-none focus:ring-2 focus:ring-accent-amber transition-all duration-300">
+      </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <div>
+        <label for="email" class="block text-accent-amber font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-dark-bg border border-section-bg rounded-lg text-text-light focus:outline-none focus:ring-2 focus:ring-accent-amber transition-all duration-300">
+      </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <div>
+        <label for="message" class="block text-accent-amber font-semibold mb-2">Message</label>
+        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-dark-bg border border-section-bg rounded-lg text-text-light focus:outline-none focus:ring-2 focus:ring-accent-amber transition-all duration-300 resize-vertical"></textarea>
+      </div>
 
-      <button type="submit">Send Message</button>
+      <button type="submit" class="w-full bg-accent-orange text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-accent-amber hover:text-section-bg transform hover:scale-105">
+        Send Message
+      </button>
     </form>
   </section>
-  <!-- Add a footer for the copyright -->
-  <footer style="text-align:center; color:#aaa; padding: 20px 0;">
-    &copy; 2025 Tim Prescher. All rights reserved.
+  <!-- Footer -->
+  <footer class="text-center text-text-muted py-8 mt-12 border-t border-section-bg">
+    <p>&copy; 2025 Tim Prescher. All rights reserved.</p>
   </footer>
 </body>
 </html>
