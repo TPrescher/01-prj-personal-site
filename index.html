@@ -5,6 +5,10 @@
   <title>My Portfolio</title>
   <!-- Link to Montserrat font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <!-- Branded Google Fonts for Projects -->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700&display=swap" rel="stylesheet"> <!-- NASA -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet"> <!-- L'Oreal -->
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet"> <!-- Charity: Water -->
   <!-- Link to FontAwesome for skill icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- Tailwind CSS CDN -->
@@ -24,6 +28,21 @@
     html {
       scroll-behavior: smooth;
     }
+    @keyframes gradient-move {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .animate-gradient-move {
+      background-size: 200% 200%;
+      animation: gradient-move 16s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="font-sans bg-gray-100">
@@ -39,73 +58,246 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center text-white pt-20 bg-no-repeat bg-cover bg-center overflow-hidden" style="background-image: url('img/abstract_background_hd.png');">
-    <!-- Overlay for better text readability -->
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="relative z-10 w-full max-w-5xl px-4">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Welcome to My Portfolio</h1>
-      <p class="text-lg md:text-xl mb-8 drop-shadow-md max-w-2xl mx-auto">Empowering change. Inspiring progress. Moving forward with purpose.</p>
-      <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 md:px-8 rounded-lg transition-colors">View My Work</a>
-    </div>
-  </section>
+  <!-- Responsive Full-Screen Hero Section with Art Direction -->
+  <section
+  id="hero"
+  class="relative min-h-[65vh] flex items-center justify-center overflow-hidden"
+  aria-label="Responsive hero section with art direction"
+>
+  <!-- Crossfade effect for responsive art-direction -->
+  <div class="absolute inset-0 z-0">
+    <!-- Portrait-style or tall screens -->
+    <img
+      src="img/Journey_tall.webp"
+      alt="A visual representation of my personal journey (tall)"
+      class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 portrait-image"
+      loading="lazy"
+      decoding="async"
+    />
+    <!-- Standard and wide screens -->
+    <img
+      src="img/Journey_wide.webp"
+      alt="A visual representation of my personal journey (wide)"
+      class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 wide-image"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <!-- Dark-to-transparent gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent z-0"></div>
+
+  <!-- Overlay container for hero text -->
+  <div class="relative z-10 text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">
+      My Journey
+    </h1>
+    <p class="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto">
+      Milestones, growth, and the path that shaped my story.
+    </p>
+  </div>
+</section>
+
+<script>
+  // JavaScript to handle crossfade effect based on viewport aspect ratio
+  const portraitImage = document.querySelector('.portrait-image');
+  const wideImage = document.querySelector('.wide-image');
+
+  function updateImageVisibility() {
+    if (window.matchMedia('(max-aspect-ratio: 4/3)').matches) {
+      portraitImage.style.opacity = '1';
+      wideImage.style.opacity = '0';
+    } else {
+      portraitImage.style.opacity = '0';
+      wideImage.style.opacity = '1';
+    }
+  }
+
+  // Initial check and event listener for viewport changes
+  updateImageVisibility();
+  window.addEventListener('resize', updateImageVisibility);
+</script>
 
   <!-- About Me Section -->
   <section id="about" class="bg-white py-20 px-5">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold mb-8 text-gray-800">About Me</h2>
-      <!-- Profile image with correct path and class -->
-      <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-blue-600">
-      <p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto">
-        Hi! I'm Tim Prescher, a strategic entrepreneur driven by a passion for building impactful businesses. With a background in leadership and business development, I'm now exploring web design to connect powerful ideas with modern, user-focused digital experiences.
-      </p>
+      <!-- Profile image: centered, rounded-full, bordered with Tailwind -->
+      <!-- Profile image with unified border color -->
+      <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-gray-900">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto mb-6">
+  I'm Tim Prescher, a systems-minded builder focused on, leadership, and innovation. I currently run organizations in the behavioral health and rehabilitation space, where our goal isn't just growth, it's meaningful transformation. I prioritize clarity, systems that work, and doing hard things the right way.
+</p>
+
+<p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto mb-6">
+  Most of my work today is about aligning people, process, and purpose. I've rebuilt legacy infrastructures, mentored leadership teams, and am actively exploring how technologies like AI and blockchain can make care more consistent and trauma-informed. Whether it's creating operational clarity or designing a new virtual care model, my goal is always the same: make the system serve people, not the other way around.
+</p>
+
+<p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto">
+  I don’t lead from theory. I lead from experience and foundations that were built under pressure while serving as an Infantryman in the United States Army. I've brought that same focus into every room I step into. This portfolio is a living expression of what I believe: Courage isn't loud, Systems should be built for people, and the best way forward is one built on trust to create lasting impact.
+</p>
+<!-- Organizations I Lead -->
+<div class="mt-12">
+  <h3 class="text-xl font-bold text-gray-800 mb-6">Organizations I Lead</h3>
+  <div class="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-14">
+    <!-- Combined Organizations Image -->
+    <div class="flex flex-col items-center w-full">
+      <img src="img/PC_and_TCBHRS.jpg" alt="Personal Courage and Therapy Center BHRS" class="w-full max-w-xs md:max-w-md rounded-lg shadow-lg mb-6">
+      <div class="flex flex-col md:flex-row items-center justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
+        <!-- Personal Courage Description -->
+        <div class="flex flex-col items-center text-center">
+          <span class="text-sm font-semibold text-gray-800 mb-1">Personal Courage</span>
+          <p class="text-xs text-gray-600 max-w-xs">
+            A future-forward initiative exploring scalable, trauma-informed mental health care using technology, strategy, and courage-centered leadership.
+          </p>
+        </div>
+        <!-- Therapy Center BHRS Description -->
+        <div class="flex flex-col items-center text-center">
+          <span class="text-sm font-semibold text-gray-800 mb-1">Therapy Center BHRS</span>
+          <p class="text-xs text-gray-600 max-w-xs">
+            A behavioral health practice focused on delivering client-centered care within the highly specialized Auto No-Fault sector. We serve complex trauma and accident-related cases through ethical operations, strong legal-billing alignment, and systems that advocate for long-term recovery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Combined Organizations Image -->
+</div>
+        <!-- Add extra padding below organizations block -->
+        <div class="py-6"></div>
+        <!-- Download Resume Button -->
+        <a href="Resume/TimothyPrescher_Resume_2025.pdf" download class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors inline-block mt-2">Download Resume</a>
+      </div>
     </div>
   </section>
 
   <!-- Skills Section -->
   <section id="skills" class="bg-gray-100 py-20 px-5">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Skills</h2>
-      <!-- Business-focused skills list with FontAwesome icons -->
-      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-chart-line text-blue-600 mr-3"></i> Business Strategy &amp; Leadership</li>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-code text-blue-600 mr-3"></i> Web Development (Learning)</li>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-network-wired text-blue-600 mr-3"></i> Business Systems Integration</li>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-project-diagram text-blue-600 mr-3"></i> Project Management</li>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-database text-blue-600 mr-3"></i> Data Analysis (Learning)</li>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"><i class="fas fa-bullseye text-blue-600 mr-3"></i> Strategic Planning &amp; Execution</li>
-      </ul>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-gray-800 text-center">Skills</h2>
+      <!-- Skills Categories Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Leadership & Strategy -->
+        <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-accent-amber text-xl font-bold mb-4">Leadership &amp; Strategy</h3>
+          <ul class="space-y-2 text-base leading-relaxed">
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Visionary Leadership</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Strategic Planning</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Team Building &amp; Mentorship</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Project Management</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Business Development</li>
+          </ul>
+        </div>
+        <!-- Technical & Digital Tools -->
+        <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-accent-amber text-xl font-bold mb-4">Technical &amp; Digital Tools</h3>
+          <ul class="space-y-2 text-base leading-relaxed">
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Web Development (HTML, CSS, JS)</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Data Analysis &amp; Visualization</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Business Systems Integration</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Digital Marketing Tools</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Productivity Platforms (Google, MS 365)</li>
+          </ul>
+        </div>
+        <!-- Innovation & Systems Design -->
+        <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-accent-amber text-xl font-bold mb-4">Innovation &amp; Systems Design</h3>
+          <ul class="space-y-2 text-base leading-relaxed">
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Creative Problem Solving</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Process Optimization</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> UX/UI Thinking</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Gamification &amp; Engagement</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Change Management</li>
+          </ul>
+        </div>
+        <!-- Soft Skills (Executive Edge) -->
+        <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-accent-amber text-xl font-bold mb-4">Soft Skills <span class="text-xs font-normal">(Executive Edge)</span></h3>
+          <ul class="space-y-2 text-base leading-relaxed">
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Communication &amp; Influence</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Emotional Intelligence</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Adaptability</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Conflict Resolution</li>
+            <li><i class="fas fa-check text-amber-400 mr-2"></i> Client Relations</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Currently Learning Section -->
+      <div class="mt-12">
+        <h4 class="text-orange-500 font-bold text-xl mb-4">Currently Learning</h4>
+        <div class="flex flex-wrap gap-4">
+          <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
+            <span class="text-gray-800 font-semibold">React.js</span>
+            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+          </div>
+          <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
+            <span class="text-gray-800 font-semibold">Tailwind CSS</span>
+            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+          </div>
+          <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
+            <span class="text-gray-800 font-semibold">AI Tools</span>
+            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+          </div>
+        </div>
+        <!-- Certificates Section (moved here) -->
+        <div class="mt-12">
+          <h4 class="text-3xl font-bold mb-8 text-gray-800">Certificates</h4>
+          <div class="flex justify-center">
+            <img src="img/web_dev_intel_certificate.png" alt="Intel Web Development Certificate" class="object-contain rounded-lg shadow-lg border border-gray-200 w-full max-w-md h-40">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Projects Section -->
   <section id="projects" class="bg-white py-20 px-5">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Projects</h2>
-      <!-- Project Card 1 -->
-      <div class="bg-gray-100 p-6 mb-8 rounded-lg shadow-md flex flex-col md:flex-row items-center gap-6">
-        <img src="img/personal_portfolio.png" alt="Personal Portfolio Website thumbnail" class="w-40 h-24 object-cover rounded-lg">
-        <div class="flex-1 text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Personal Portfolio Website</h3>
-          <p class="text-gray-600 mb-4">A single-page website designed to showcase my professional background and ongoing web development projects.</p>
-          <a href="#" class="text-blue-600 font-bold border-2 border-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition-colors" target="_blank">View Project</a>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 text-gray-800 text-center">Projects</h2>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <!-- Intel Localization -->
+        <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
+          <!-- Intel logo as the main project image -->
+          <!-- Intel logo with custom blue background for branding -->
+          <div style="background-color: #0071c5;" class="flex items-center justify-center rounded-lg w-48 h-32 mb-4 p-2">
+            <img src="img/intel-header-logo.svg" alt="Intel Logo" class="object-contain w-full h-full">
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-2 font-sans" style="font-family: 'Montserrat', Arial, sans-serif;">Intel Localization</h3>
+          <p class="text-gray-600 mb-4 text-center">A localization and accessibility upgrade for Intel’s global site with RTL layout and WCAG compliance.</p>
+          <!-- View Live button for Intel Localization (fixed URL typo) -->
+          <!-- Button: View Live (Intel) -->
+          <a href="https://tprescher.github.io/03-prj-intel-localizatoin/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
-      </div>
-      <!-- Project Card 2 -->
-      <div class="bg-gray-100 p-6 mb-8 rounded-lg shadow-md flex flex-col md:flex-row items-center gap-6">
-        <img src="img/Intel_Comming_Soon.png" alt="Intel's Sustainability Journey thumbnail" class="w-40 h-24 object-cover rounded-lg">
-        <div class="flex-1 text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Intel's Sustainability Journey</h3>
-          <p class="text-gray-600 mb-4">A localization project focused on implementing RTL layout adaptation and accessibility enhancements for Intel’s website.</p>
-          <a href="#" class="text-blue-600 font-bold border-2 border-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition-colors" target="_blank">View Project</a>
+        <!-- NASA Space Explorer -->
+        <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
+          <!-- Project logo: object-contain for best fit, bg-white for contrast, border and padding for consistency -->
+          <img src="img/NASA-Logo-Large.jpg" alt="NASA Space Explorer Logo" class="object-contain bg-white border border-gray-200 rounded-lg shadow w-48 h-32 mb-4 p-2">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2" style="font-family: 'Orbitron', Arial, sans-serif;">NASA Space Explorer</h3>
+          <p class="text-gray-600 mb-4 text-center">An interactive space data explorer built using NASA’s public API and clean UI principles.</p>
+          <!-- View Live button for NASA Space Explorer -->
+          <!-- Button: View Live (NASA) -->
+          <a href="https://tprescher.github.io/07-nasa-space-explorer/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
-      </div>
-      <!-- Project Card 3 -->
-      <div class="bg-gray-100 p-6 mb-8 rounded-lg shadow-md flex flex-col md:flex-row items-center gap-6">
-        <img src="img/Charity_wtr.png" alt="Game Concept for charity: water thumbnail" class="w-40 h-24 object-cover rounded-lg">
-        <div class="flex-1 text-center md:text-left">
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Game Concept for charity: water</h3>
-          <p class="text-gray-600 mb-4">A game concept aimed at raising awareness for clean water initiatives, integrating charity: water branding and user interaction.</p>
-          <a href="#" class="text-blue-600 font-bold border-2 border-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition-colors" target="_blank">View Project</a>
+        <!-- L’Oreal AI Chatbot -->
+        <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
+          <!-- Project logo: object-contain for best fit, bg-white for contrast, border and padding for consistency -->
+          <img src="img/loreal-logo.png" alt="L’Oreal AI Chatbot Logo" class="object-contain bg-white border border-gray-200 rounded-lg shadow w-48 h-32 mb-4 p-2">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2" style="font-family: 'Playfair Display', serif;">L’Oreal AI Chatbot</h3>
+          <p class="text-gray-600 mb-4 text-center">A customer service chatbot prototype designed for beauty brand engagement using AI logic.</p>
+          <!-- View Live button for L’Oreal AI Chatbot -->
+          <!-- Button: View Live (L'Oreal) -->
+          <a href="https://tprescher.github.io/08-prj-loreal-chatbot/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
+        </div>
+        <!-- Water Quest – Charity: Water -->
+        <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
+          <!-- Project logo: object-contain for best fit, bg-white for contrast, border and padding for consistency -->
+          <img src="img/cw_logo_horizontal.png" alt="Water Quest – Charity: Water Logo" class="object-contain bg-white border border-gray-200 rounded-lg shadow w-48 h-32 mb-4 p-2">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2" style="font-family: 'Quicksand', Arial, sans-serif;">Water Quest – Charity: Water</h3>
+          <p class="text-gray-600 mb-4 text-center">A gamified campaign for Charity: Water to teach users about water scarcity through play.</p>
+          <!-- View Live button for Water Quest – Charity: Water -->
+          <!-- Button: View Live (Charity: Water) -->
+          <a href="https://tprescher.github.io/05-cw-game-water-quest/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
       </div>
     </div>
@@ -132,13 +324,15 @@
           <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none"></textarea>
         </div>
 
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">Send Message</button>
+        <!-- Button: Send Message -->
+        <button type="submit" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors">Send Message</button>
       </form>
     </div>
   </section>
   <!-- Footer -->
   <!-- Back to Top Button -->
-  <button id="backToTop" class="hidden fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-full shadow-lg transition-opacity z-50" title="Back to Top">
+  <!-- Button: Back to Top -->
+  <button id="backToTop" class="hidden fixed bottom-8 right-8 bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-5 rounded-full shadow-lg transition-opacity z-50" title="Back to Top">
     ↑ Top
   </button>
 
