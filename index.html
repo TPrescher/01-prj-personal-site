@@ -61,7 +61,7 @@
   <!-- Responsive Full-Screen Hero Section with Art Direction -->
   <section
   id="hero"
-  class="relative min-h-[65vh] flex items-center justify-center overflow-hidden"
+  class="relative min-h-[65vh] flex items-start justify-center overflow-hidden"
   aria-label="Responsive hero section with art direction"
 >
   <!-- Crossfade effect for responsive art-direction -->
@@ -88,7 +88,7 @@
   <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent z-0"></div>
 
   <!-- Overlay container for hero text -->
-  <div class="relative z-10 text-center px-4">
+  <div class="relative z-10 text-center px-4 mt-20">
     <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">
       My Journey
     </h1>
@@ -96,6 +96,11 @@
       Milestones, growth, and the path that shaped my story.
     </p>
   </div>
+
+  <!-- LinkedIn Button in Hero Section -->
+  <a href="https://www.linkedin.com/in/timothy-prescher-5b886620b" target="_blank" rel="noopener" class="absolute bottom-4 right-4 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" class="w-12 h-12">
+  </a>
 </section>
 
 <script>
@@ -140,34 +145,27 @@
 <!-- Organizations I Lead -->
 <div class="mt-12">
   <h3 class="text-xl font-bold text-gray-800 mb-6">Organizations I Lead</h3>
-  <div class="flex flex-col md:flex-row items-center justify-center space-y-10 md:space-y-0 md:space-x-14">
-    <!-- Combined Organizations Image -->
-    <div class="flex flex-col items-center w-full">
-      <img src="img/PC_and_TCBHRS.jpg" alt="Personal Courage and Therapy Center BHRS" class="w-full max-w-xs md:max-w-md rounded-lg shadow-lg mb-6">
-      <div class="flex flex-col md:flex-row items-center justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
+  <div class="flex flex-col md:flex-row items-start justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
+        <!-- Personal Courage and Therapy Center BHRS Image -->
+        <div class="flex flex-col items-center w-full">
+          <img src="img/PC_and_TCBHRS.jpg" alt="Personal Courage and Therapy Center BHRS" class="w-full max-w-xs md:max-w-md rounded-lg shadow-lg mb-6">
+          <div class="flex flex-col md:flex-row items-start justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
         <!-- Personal Courage Description -->
-        <div class="flex flex-col items-center text-center">
-          <span class="text-sm font-semibold text-gray-800 mb-1">Personal Courage</span>
-          <p class="text-xs text-gray-600 max-w-xs">
+        <div class="flex flex-col items-center text-center md:w-1/2">
+          <span class="text-base font-semibold text-gray-800 mb-4">Personal Courage</span>
+          <p class="text-base text-gray-600 max-w-xs">
             A future-forward initiative exploring scalable, trauma-informed mental health care using technology, strategy, and courage-centered leadership.
           </p>
         </div>
         <!-- Therapy Center BHRS Description -->
-        <div class="flex flex-col items-center text-center">
-          <span class="text-sm font-semibold text-gray-800 mb-1">Therapy Center BHRS</span>
-          <p class="text-xs text-gray-600 max-w-xs">
+        <div class="flex flex-col items-center text-center md:w-1/2">
+          <span class="text-base font-semibold text-gray-800 mb-4">Therapy Center BHRS</span>
+          <p class="text-base text-gray-600 max-w-xs">
             A behavioral health practice focused on delivering client-centered care within the highly specialized Auto No-Fault sector. We serve complex trauma and accident-related cases through ethical operations, strong legal-billing alignment, and systems that advocate for long-term recovery.
           </p>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Combined Organizations Image -->
-</div>
-        <!-- Add extra padding below organizations block -->
-        <div class="py-6"></div>
-        <!-- Download Resume Button -->
-        <a href="Resume/TimothyPrescher_Resume_2025.pdf" download class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors inline-block mt-2">Download Resume</a>
       </div>
     </div>
   </section>
@@ -308,7 +306,7 @@
     <div class="max-w-2xl mx-auto">
       <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Contact</h2>
       <!-- Simple contact form -->
-      <form class="space-y-6">
+      <form action="https://formspree.io/f/{your-form-id}" method="POST" class="space-y-6">
         <div>
           <label for="name" class="block text-sm font-bold text-gray-700 mb-2">Name</label>
           <input type="text" id="name" name="name" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none">
@@ -324,6 +322,9 @@
           <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none"></textarea>
         </div>
 
+        <!-- Hidden input to send to multiple emails -->
+        <input type="hidden" name="_cc" value="tim@therapycenterbhrs.com,preschet@mail.gvsu.edu">
+
         <!-- Button: Send Message -->
         <button type="submit" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors">Send Message</button>
       </form>
@@ -336,8 +337,12 @@
     ↑ Top
   </button>
 
-  <footer class="bg-gray-800 text-gray-400 text-center py-8">
+  <footer class="bg-gray-800 text-gray-400 text-center py-8 relative">
     &copy; 2025 Tim Prescher. All rights reserved.
+    <!-- LinkedIn Button in Footer (moved to left center) -->
+    <a href="https://www.linkedin.com/in/timothy-prescher-5b886620b" target="_blank" rel="noopener" class="absolute left-4 top-1/2 transform -translate-y-1/2">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" class="w-8 h-8">
+    </a>
   </footer>
 </body>
 </html>
