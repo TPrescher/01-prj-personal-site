@@ -1,5 +1,5 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/universal:linux",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -17,5 +17,6 @@
         "editor.stickyScroll.enabled": false
       }
     }
-  }
+  },
+  "postAttachCommand": "rm -rf ~/.cache/* ~/.vscode-server/extensionsCache/* ~/.vscode-server/data/User/workspaceStorage/* ~/.config/Code/Cache/* ~/.config/Code/CachedData/*"
 }
