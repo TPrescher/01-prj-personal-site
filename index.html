@@ -28,6 +28,92 @@
     html {
       scroll-behavior: smooth;
     }
+
+    :root {
+      /* Hero palette tokens */
+      --ink: 2 6 23;          /* deep slate */
+      --fog: 148 163 184;     /* soft slate glow */
+      --gold: 255 214 140;    /* hero halo gold */
+      --gold-2: 255 232 170;  /* lighter gold for hover/highlights */
+
+      /* Semantic accents */
+      --accent: var(--gold);
+      --accent-hover: var(--gold-2);
+    }
+
+    .accent-text { color: rgb(var(--accent) / 0.95); }
+    .accent-bg { background-color: rgb(var(--accent) / 0.16); }
+    .accent-border { border-color: rgb(var(--accent) / 0.35); }
+    .accent-glow { box-shadow: 0 0 30px rgb(var(--accent) / 0.18); }
+
+    /* Research section helper classes */
+    .site-section {
+      padding: 64px 16px 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .panel {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.92);
+      background:
+        radial-gradient(900px 520px at 50% 30%, rgba(24, 38, 57, 0.16) 0%, rgba(2, 6, 23, 0.92) 55%, rgba(2, 6, 23, 0.98) 100%),
+        radial-gradient(700px 420px at 65% 55%, rgba(255, 214, 140, 0.10) 0%, rgba(2, 6, 23, 0) 70%),
+        rgba(2, 6, 23, 0.96);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(255, 214, 140, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .muted {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .subtle {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.1rem;
+      border-radius: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.92);
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgb(var(--accent) / 0.35);
+      transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgb(var(--accent-hover) / 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-link {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .btn-link:hover {
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+
+
     @keyframes gradient-move {
       0% {
         background-position: 0% 50%;
@@ -50,6 +136,7 @@
   <nav class="bg-gray-800 p-4 fixed top-0 w-full z-50">
     <ul class="flex flex-wrap justify-center space-x-2 md:space-x-8">
       <li><a href="#hero" class="text-white font-bold px-3 py-2 md:px-4 md:py-2 rounded hover:bg-gray-600 transition-colors text-xs md:text-base">Home</a></li>
+      <li><a href="#research" class="text-white font-bold px-3 py-2 md:px-4 md:py-2 rounded hover:bg-gray-600 transition-colors text-xs md:text-base">Research</a></li>
       <li><a href="#about" class="text-white font-bold px-3 py-2 md:px-4 md:py-2 rounded hover:bg-gray-600 transition-colors text-xs md:text-base">About</a></li>
       <li><a href="#skills" class="text-white font-bold px-3 py-2 md:px-4 md:py-2 rounded hover:bg-gray-600 transition-colors text-xs md:text-base">Skills</a></li>
       <li><a href="#projects" class="text-white font-bold px-3 py-2 md:px-4 md:py-2 rounded hover:bg-gray-600 transition-colors text-xs md:text-base">Projects</a></li>
@@ -58,117 +145,499 @@
   </nav>
 
   <!-- Hero Section -->
-  <!-- Responsive Full-Screen Hero Section with Art Direction -->
   <section
-  id="hero"
-  class="relative min-h-[65vh] flex items-start justify-center overflow-hidden"
-  aria-label="Responsive hero section with art direction"
->
-  <!-- Crossfade effect for responsive art-direction -->
-  <div class="absolute inset-0 z-0">
-    <!-- Portrait-style or tall screens -->
-    <img
-      src="img/Journey_tall.webp"
-      alt="A visual representation of my personal journey (tall)"
-      class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 portrait-image"
-      loading="lazy"
-      decoding="async"
-    />
-    <!-- Standard and wide screens -->
-    <img
-      src="img/Journey_wide.webp"
-      alt="A visual representation of my personal journey (wide)"
-      class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 wide-image"
-      loading="lazy"
-      decoding="async"
-    />
+    id="hero"
+    class="relative bg-slate-950 pt-16 md:pt-20 h-[34vh] sm:h-[38vh] md:h-[42vh] lg:h-[46vh] overflow-hidden"
+    aria-label="Hero section with clarity quote"
+  >
+    <!-- Background atmosphere (no grain, scales perfectly) -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="
+        background:
+          radial-gradient(1100px 700px at 50% 55%, rgba(148,163,184,0.18) 0%, rgba(2,6,23,0.92) 55%, rgba(2,6,23,1) 100%),
+          radial-gradient(900px 550px at 65% 45%, rgba(37,99,235,0.16) 0%, rgba(2,6,23,0) 65%),
+          radial-gradient(700px 450px at 35% 60%, rgba(99,102,241,0.12) 0%, rgba(2,6,23,0) 70%);
+      "
+    ></div>
+
+    <!-- Subtle horizon sweep (vector, not an image) -->
+    <svg
+      class="absolute inset-x-0 bottom-[-10%] w-full h-[70%] opacity-40"
+      viewBox="0 0 1440 600"
+      aria-hidden="true"
+      focusable="false"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,420 C220,360 420,520 720,470 C1020,420 1160,320 1440,360 L1440,600 L0,600 Z"
+        fill="rgba(148,163,184,0.18)"
+      />
+      <path
+        d="M0,470 C260,430 470,560 740,520 C1010,480 1180,410 1440,450 L1440,600 L0,600 Z"
+        fill="rgba(2,6,23,0.65)"
+      />
+    </svg>
+
+    <!-- Vignette for focus -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.60) 100%);"
+    ></div>
+
+    <!-- Content -->
+    <div class="relative h-full flex items-center justify-center px-4 sm:px-8">
+      <!-- Square wrapper keeps the circle inside the hero on all screens -->
+      <div class="relative w-[min(78vw,520px)] h-[min(78vw,520px)] max-w-full max-h-full flex items-center justify-center">
+
+        <!-- Unified mark: circle + triangle + quote (all scale together) -->
+        <svg
+          viewBox="0 0 600 600"
+          class="w-full h-full"
+          role="img"
+          aria-label="Let all that is built between us be shaped by clarity, never illusion."
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <!-- Gold glow (used on the "halo" ring behind the white core ring) -->
+            <filter id="goldHalo" x="-45%" y="-45%" width="190%" height="190%">
+              <feGaussianBlur stdDeviation="7" result="blur" />
+              <feColorMatrix
+                in="blur"
+                type="matrix"
+                values="
+                  1 0 0 0 0.22
+                  0 1 0 0 0.18
+                  0 0 1 0 0.00
+                  0 0 0 0.75 0"
+                result="goldBlur"
+              />
+              <feMerge>
+                <feMergeNode in="goldBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+
+            <!-- Inner haze -->
+            <radialGradient id="innerHaze" cx="50%" cy="55%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.06)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+            </radialGradient>
+
+            <!-- Mask: hide triangle lines only behind the text area, but DO NOT touch the triangle base -->
+            <!-- White = visible, Black = hidden -->
+            <mask id="noLinesThroughQuote">
+              <rect x="0" y="0" width="600" height="600" fill="white" />
+              <!-- Quote window: ends well ABOVE the triangle base (base is y=412.5) -->
+              <rect x="130" y="195" width="340" height="205" rx="16" fill="black" />
+              <!-- (ends at y=400, leaving the base untouched) -->
+            </mask>
+          </defs>
+
+          <!-- Inner haze -->
+          <circle cx="300" cy="300" r="230" fill="url(#innerHaze)" />
+
+          <!-- OUTER RING: Gold halo behind -->
+          <circle
+            cx="300"
+            cy="300"
+            r="245"
+            fill="none"
+            stroke="rgba(255, 214, 140, 0.80)"
+            stroke-width="8"
+            filter="url(#goldHalo)"
+          />
+
+          <!-- OUTER RING: White core on top -->
+          <circle
+            cx="300"
+            cy="300"
+            r="245"
+            fill="none"
+            stroke="rgba(255,255,255,0.92)"
+            stroke-width="4"
+          />
+
+          <!-- Thin inner ring -->
+          <circle
+            cx="300"
+            cy="300"
+            r="225"
+            fill="none"
+            stroke="rgba(255,255,255,0.14)"
+            stroke-width="2"
+          />
+
+          <!-- Triangle (masked so it won't cross through letters, but base stays visible) -->
+          <polygon
+            points="300,75 494.9,412.5 105.1,412.5"
+            fill="none"
+            stroke="rgba(255,255,255,0.14)"
+            stroke-width="2"
+            mask="url(#noLinesThroughQuote)"
+          />
+
+          <!-- Quote text -->
+          <g
+            fill="rgba(255,255,255,0.92)"
+            font-family="ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif"
+            text-anchor="middle"
+          >
+            <text x="300" y="235" font-size="42">Let all that is</text>
+            <text x="300" y="290" font-size="42">built between us</text>
+            <text x="300" y="345" font-size="42">be shaped by clarity
+            </text>
+            <text x="300" y="395" font-size="42">never illusion</text>
+          </g>
+        </svg>
+
+      </div>
+    </div>
+
+    <!-- LinkedIn Button in Hero Section (inline SVG, no bitmap) -->
+    <a
+      href="https://www.linkedin.com/in/timothy-prescher-5b886620b"
+      target="_blank"
+      rel="noopener"
+      aria-label="Visit my LinkedIn profile"
+      class="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-white/95 hover:bg-white shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12"
+    >
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="w-6 h-6 fill-[#0A66C2]">
+        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45H7.1V9H3.56v11.45z"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <!-- This sits directly under the hero to make the PPD section feel primary. -->
+  <main class="bg-slate-200">
+<!-- Research Section: Cohesive with Hero -->
+<section id="research" class="site-section" aria-label="Research">
+  <div class="panel p-6 sm:p-8">
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-center">
+      The Principle of Proportional Duty (PPD)
+    </h2>
+
+    <div class="mt-4 space-y-4 muted text-base sm:text-lg leading-relaxed">
+      <p>
+        A mathematical framework for moral responsibility under uncertainty that formalizes the relationship
+        between epistemic humility, knowledge quality, and moral duty.
+      </p>
+      <p>
+        The PPD framework demonstrates that responsible action scales with both what we know and our awareness
+        of what we don't know—a principle with applications spanning AI governance, medical ethics, and high-stakes
+        decision-making.
+      </p>
+    </div>
+
+    <div class="mt-6 card p-6">
+      <h3 class="text-lg font-bold">Research Status</h3>
+      <ul class="mt-3 space-y-2 muted">
+        <li>• Published on arXiv (peer-review pending)</li>
+        <li>• Indexed on PhilPapers</li>
+        <li>• Registered with OSF (DOI assigned)</li>
+      </ul>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a class="btn" href="https://arxiv.org/abs/2512.15740">View on arXiv</a>
+      <a class="btn" href="https://philpapers.org/rec/PRETPO-29">PhilPapers</a>
+      <a class="btn" href="https://doi.org/10.17605/OSF.IO/HN7KC">OSF Project</a>
+    </div>
+
+    <!-- Read-on-site control -->
+    <div class="mt-8">
+      <button
+        id="toggle-paper"
+        class="btn"
+        aria-expanded="false"
+        aria-controls="paper-embed"
+        type="button"
+      >
+        📄 Read the paper on this site
+      </button>
+
+      <p class="mt-3 subtle text-sm">
+        Opens an embedded viewer below. External links remain the canonical references for versioning and indexing.
+      </p>
+    </div>
+
+    <!-- Embedded paper -->
+    <div id="paper-embed" class="mt-5 hidden">
+      <!--
+        Important for accessibility:
+        When someone zooms the PDF for larger print, the page can become wider than the viewer.
+        We use overflow-auto so the viewer can scroll instead of cutting off the sides.
+      -->
+      <div class="card overflow-auto">
+        <iframe
+          src="papers/ppd.pdf"
+          class="w-full h-[80vh] bg-white"
+          title="The Principle of Proportional Duty (PPD) – Full Paper"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a class="btn" href="papers/ppd.pdf" download>Download PDF</a>
+        <a
+          class="btn-link text-sm"
+          href="papers/ppd.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Open in new tab
+        </a>
+      </div>
+    </div>
+
   </div>
-
-  <!-- Dark-to-transparent gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent z-0"></div>
-
-  <!-- Overlay container for hero text -->
-  <div class="relative z-10 flex flex-col items-center text-center px-4 mt-32 w-full">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-12 w-full">
-      My Journey
-    </h1>
-    <p class="text-lg md:text-2xl text-white/90 max-w-2xl w-full mx-auto mb-0">
-      Milestones, growth, and the path that shaped my story.
-    </p>
-  </div>
-
-  <!-- LinkedIn Button in Hero Section -->
-  <a href="https://www.linkedin.com/in/timothy-prescher-5b886620b" target="_blank" rel="noopener" class="absolute bottom-4 right-4 bg-white rounded-full shadow-lg p-2 sm:p-3 hover:shadow-xl transition-all duration-300">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" class="w-8 h-8 sm:w-12 sm:h-12 transition-all duration-300">
-  </a>
 </section>
 
-<script>
-  // JavaScript to handle crossfade effect based on viewport aspect ratio
-  const portraitImage = document.querySelector('.portrait-image');
-  const wideImage = document.querySelector('.wide-image');
+    <section id="domains" class="site-section" aria-label="Domains of application">
+      <div class="panel p-6 sm:p-8">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="grid gap-6 md:grid-cols-3">
+            <!-- card 1 -->
+            <!-- Domain Card -->
+            <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/55 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-md">
+              <!-- soft interior gradient -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/6 via-white/2 to-transparent"></div>
 
-  function updateImageVisibility() {
-    if (window.matchMedia('(max-aspect-ratio: 4/3)').matches) {
-      portraitImage.style.opacity = '1';
-      wideImage.style.opacity = '0';
-    } else {
-      portraitImage.style.opacity = '0';
-      wideImage.style.opacity = '1';
-    }
-  }
+              <!-- subtle vignette -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 [mask-image:radial-gradient(circle_at_30%_25%,black,transparent_70%)] bg-black/30"></div>
 
-  // Initial check and event listener for viewport changes
-  updateImageVisibility();
-  window.addEventListener('resize', updateImageVisibility);
-</script>
+              <!-- ICON CLUSTER -->
+              <div class="relative mb-6 h-16 w-16">
+                <!-- gold halo ring -->
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 rounded-full
+                         shadow-[0_0_0_2px_rgba(255,232,170,0.75),0_0_30px_rgba(214,178,94,0.55),0_0_80px_rgba(214,178,94,0.25)]"
+                ></div>
 
-  <!-- About Me Section -->
-  <section id="about" class="bg-white py-20 px-5">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-8 text-gray-800">About Me</h2>
-      <!-- Profile image: centered, rounded-full, bordered with Tailwind -->
-      <!-- Profile image with unified border color -->
-      <img src="img/IMG_3881.jpg" alt="Profile photo of Tim Prescher" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-gray-900">
-      <div class="max-w-3xl mx-auto">
-        <p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto mb-6">
-  I'm Tim Prescher, a systems-minded builder focused on, leadership, and innovation. I currently run organizations in the behavioral health and rehabilitation space, where our goal isn't just growth, it's meaningful transformation. I prioritize clarity, systems that work, and doing hard things the right way.
-</p>
+                <!-- dust particles (subtle, static, no noise grain) -->
+                <div
+                  aria-hidden="true"
+                  class="absolute -inset-6 opacity-60"
+                  style="background:
+                    radial-gradient(10px 10px at 30% 40%, rgba(214,178,94,0.30) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(12px 12px at 70% 30%, rgba(214,178,94,0.22) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(9px 9px at 60% 70%, rgba(214,178,94,0.18) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(7px 7px at 25% 75%, rgba(214,178,94,0.16) 0%, rgba(214,178,94,0) 60%);"
+                ></div>
 
-<p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto mb-6">
-  Most of my work today is about aligning people, process, and purpose. I've rebuilt legacy infrastructures, mentored leadership teams, and am actively exploring how technologies like AI and blockchain can make care more consistent and trauma-informed. Whether it's creating operational clarity or designing a new virtual care model, my goal is always the same: make the system serve people, not the other way around.
-</p>
+                <!-- icon plate -->
+                <div class="relative flex h-16 w-16 items-center justify-center rounded-full bg-slate-950/70">
+                  <!-- Use your SVG asset -->
+                  <img src="/icons/domain-decision-theory.svg" alt="" aria-hidden="true" class="h-10 w-10" />
+                </div>
+              </div>
 
-<p class="text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto">
-  I don’t lead from theory. I lead from experience and foundations that were built under pressure while serving as an Infantryman in the United States Army. I've brought that same focus into every room I step into. This portfolio is a living expression of what I believe: Courage isn't loud, Systems should be built for people, and the best way forward is one built on trust to create lasting impact.
-</p>
-<!-- Organizations I Lead -->
-<div class="mt-12">
-  <h3 class="text-xl font-bold text-gray-800 mb-6">Organizations I Lead</h3>
-  <div class="flex flex-col md:flex-row items-start justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
-        <!-- Personal Courage and Therapy Center BHRS Image -->
-        <div class="flex flex-col items-center w-full">
-          <img src="img/PC_and_TCBHRS.jpg" alt="Personal Courage and Therapy Center BHRS" class="w-full max-w-xs md:max-w-md rounded-lg shadow-lg mb-6">
-          <div class="flex flex-col md:flex-row items-start justify-center w-full space-y-10 md:space-y-0 md:space-x-14">
-        <!-- Personal Courage Description -->
-        <div class="flex flex-col items-center text-center md:w-1/2 w-full">
-          <span class="text-base font-semibold text-gray-800 mb-4">Personal Courage</span>
-          <p class="text-base text-gray-600 max-w-xs w-full text-center md:text-left">
-            A future-forward initiative exploring scalable, trauma-informed mental health care using technology, strategy, and courage-centered leadership.
-          </p>
+              <!-- TEXT -->
+              <h3 class="text-xl font-semibold text-white">Decision Theory</h3>
+              <p class="mt-3 text-white/70 leading-relaxed">
+                Exploring how uncertainty affects moral responsibility and rational choice under incomplete information
+              </p>
+
+              <!-- hover polish -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style="background: radial-gradient(600px 240px at 25% 20%, rgba(214,178,94,0.14), transparent 60%);"></div>
+            </div>
+
+            <!-- card 2 -->
+            <!-- Domain Card -->
+            <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/55 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-md">
+              <!-- soft interior gradient -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/6 via-white/2 to-transparent"></div>
+
+              <!-- subtle vignette -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 [mask-image:radial-gradient(circle_at_30%_25%,black,transparent_70%)] bg-black/30"></div>
+
+              <!-- ICON CLUSTER -->
+              <div class="relative mb-6 h-16 w-16">
+                <!-- gold halo ring -->
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 rounded-full
+                         shadow-[0_0_0_2px_rgba(255,232,170,0.75),0_0_30px_rgba(214,178,94,0.55),0_0_80px_rgba(214,178,94,0.25)]"
+                ></div>
+
+                <!-- dust particles (subtle, static, no noise grain) -->
+                <div
+                  aria-hidden="true"
+                  class="absolute -inset-6 opacity-60"
+                  style="background:
+                    radial-gradient(10px 10px at 30% 40%, rgba(214,178,94,0.30) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(12px 12px at 70% 30%, rgba(214,178,94,0.22) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(9px 9px at 60% 70%, rgba(214,178,94,0.18) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(7px 7px at 25% 75%, rgba(214,178,94,0.16) 0%, rgba(214,178,94,0) 60%);"
+                ></div>
+
+                <!-- icon plate -->
+                <div class="relative flex h-16 w-16 items-center justify-center rounded-full bg-slate-950/70">
+                  <!-- Use your SVG asset -->
+                  <img src="/icons/domain-ai-ethics.svg" alt="" aria-hidden="true" class="h-10 w-10" />
+                </div>
+              </div>
+
+              <!-- TEXT -->
+              <h3 class="text-xl font-semibold text-white">AI Ethics &amp; Governance</h3>
+              <p class="mt-3 text-white/70 leading-relaxed">
+                Developing frameworks for responsible AI deployment in high-stakes domains
+              </p>
+
+              <!-- hover polish -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style="background: radial-gradient(600px 240px at 25% 20%, rgba(214,178,94,0.14), transparent 60%);"></div>
+            </div>
+
+            <!-- card 3 -->
+            <!-- Domain Card -->
+            <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/55 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-md">
+              <!-- soft interior gradient -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/6 via-white/2 to-transparent"></div>
+
+              <!-- subtle vignette -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 [mask-image:radial-gradient(circle_at_30%_25%,black,transparent_70%)] bg-black/30"></div>
+
+              <!-- ICON CLUSTER -->
+              <div class="relative mb-6 h-16 w-16">
+                <!-- gold halo ring -->
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 rounded-full
+                         shadow-[0_0_0_2px_rgba(255,232,170,0.75),0_0_30px_rgba(214,178,94,0.55),0_0_80px_rgba(214,178,94,0.25)]"
+                ></div>
+
+                <!-- dust particles (subtle, static, no noise grain) -->
+                <div
+                  aria-hidden="true"
+                  class="absolute -inset-6 opacity-60"
+                  style="background:
+                    radial-gradient(10px 10px at 30% 40%, rgba(214,178,94,0.30) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(12px 12px at 70% 30%, rgba(214,178,94,0.22) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(9px 9px at 60% 70%, rgba(214,178,94,0.18) 0%, rgba(214,178,94,0) 60%),
+                    radial-gradient(7px 7px at 25% 75%, rgba(214,178,94,0.16) 0%, rgba(214,178,94,0) 60%);"
+                ></div>
+
+                <!-- icon plate -->
+                <div class="relative flex h-16 w-16 items-center justify-center rounded-full bg-slate-950/70">
+                  <!-- Use your SVG asset -->
+                  <img src="/icons/domain-moral-philosophy.svg" alt="" aria-hidden="true" class="h-10 w-10" />
+                </div>
+              </div>
+
+              <!-- TEXT -->
+              <h3 class="text-xl font-semibold text-white">Moral Philosophy</h3>
+              <p class="mt-3 text-white/70 leading-relaxed">
+                Investigating epistemic humility and its role in ethical decision-making
+              </p>
+
+              <!-- hover polish -->
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style="background: radial-gradient(600px 240px at 25% 20%, rgba(214,178,94,0.14), transparent 60%);"></div>
+            </div>
+          </div>
         </div>
-        <!-- Therapy Center BHRS Description -->
-        <div class="flex flex-col items-center text-center md:w-1/2 w-full">
-          <span class="text-base font-semibold text-gray-800 mb-4">Therapy Center BHRS</span>
-          <p class="text-base text-gray-600 max-w-xs w-full text-center md:text-left">
-            A behavioral health practice focused on delivering client-centered care within the highly specialized Auto No-Fault sector. We serve complex trauma and accident-related cases through ethical operations, strong legal-billing alignment, and systems that advocate for long-term recovery.
+      </div>
+    </section>
+
+    <!-- SECTION: Academic Profiles (keep; add a light framing line) -->
+    <section
+      id="profiles"
+      class="mx-auto max-w-5xl px-4 sm:px-8 pb-14 sm:pb-16"
+      aria-label="Academic profiles"
+    >
+      <div class="rounded-2xl bg-white/55 border border-slate-300/60 shadow-sm p-6 sm:p-8 text-center">
+        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">Academic Profiles</h3>
+
+        <p class="mt-2 text-slate-600">
+          Primary academic references and preprints.
+        </p>
+
+        <div class="mt-5 flex items-center justify-center gap-6 text-slate-700">
+          <a
+            href="https://scholar.google.com/"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 hover:text-slate-900 transition"
+          >
+            <span aria-hidden="true">▣</span>
+            <span>Google Scholar</span>
+          </a>
+
+          <span class="text-slate-400" aria-hidden="true">|</span>
+
+          <a
+            href="https://www.researchgate.net/"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 hover:text-slate-900 transition"
+          >
+            <span aria-hidden="true">＋</span>
+            <span>ResearchGate</span>
+          </a>
+        </div>
+
+        <p class="mt-6 text-slate-600 italic">
+          Current affiliation: Grand Valley State University | Independent Researcher
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="site-section" aria-label="About">
+    <div class="panel p-6 sm:p-8">
+      <!-- About card (glass) -->
+      <div
+        class="grid gap-10 md:gap-12 md:grid-cols-[280px_1fr] items-start
+               card p-8 sm:p-10 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-md"
+      >
+        <!-- Portrait (aligned with icon language) -->
+        <div class="relative mx-auto md:mx-0 h-48 w-48">
+          <div
+            class="pointer-events-none absolute -inset-1 rounded-full
+                   shadow-[0_0_0_2px_rgba(255,232,170,0.8),0_0_40px_rgba(214,178,94,0.45)]"
+          ></div>
+          <img
+            src="img/Headshot_Nike_Hat.jpg"
+            alt="Tim Prescher"
+            class="relative block h-48 w-48 rounded-full object-cover"
+          />
+        </div>
+
+        <!-- Text block (restructured, same meaning) -->
+        <div>
+          <h2 class="text-3xl font-semibold text-white">About Me</h2>
+
+          <!-- anchor line -->
+          <p class="mt-4 max-w-xl text-lg text-white/85">
+            I design and study systems where responsibility must scale with uncertainty.
+          </p>
+
+          <!-- role triad -->
+          <div class="mt-6 flex flex-wrap gap-4 text-sm text-white/70">
+            <span class="rounded-full border border-white/15 px-4 py-1">Builder</span>
+            <span class="rounded-full border border-white/15 px-4 py-1">Researcher</span>
+            <span class="rounded-full border border-white/15 px-4 py-1">Practitioner</span>
+          </div>
+
+          <!-- supporting paragraph -->
+          <p class="mt-6 max-w-2xl leading-relaxed text-white/70">
+            I’m Tim Prescher, a systems-minded builder, researcher, and student at Grand Valley State University.
+            My work bridges practical experience with rigorous inquiry—spanning behavioral health, AI ethics,
+            decision theory, and organizational design. I lead organizations in the mental health and rehabilitation
+            space while advancing independent research on moral responsibility under uncertainty through the
+            Principle of Proportional Duty (PPD).
           </p>
         </div>
       </div>
     </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Skills Section -->
   <section id="skills" class="bg-gray-100 py-20 px-5">
@@ -178,64 +647,64 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Leadership & Strategy -->
         <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-accent-amber text-xl font-bold mb-4">Leadership &amp; Strategy</h3>
+          <h3 class="accent-text text-xl font-bold mb-4">Leadership &amp; Strategy</h3>
           <ul class="space-y-2 text-base leading-relaxed">
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Visionary Leadership</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Strategic Planning</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Team Building &amp; Mentorship</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Project Management</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Business Development</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Visionary Leadership</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Strategic Planning</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Team Building &amp; Mentorship</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Project Management</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Business Development</li>
           </ul>
         </div>
         <!-- Technical & Digital Tools -->
         <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-accent-amber text-xl font-bold mb-4">Technical &amp; Digital Tools</h3>
+          <h3 class="accent-text text-xl font-bold mb-4">Technical &amp; Digital Tools</h3>
           <ul class="space-y-2 text-base leading-relaxed">
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Web Development (HTML, CSS, JS)</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Data Analysis &amp; Visualization</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Business Systems Integration</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Digital Marketing Tools</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Productivity Platforms (Google, MS 365)</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Web Development (HTML, CSS, JS)</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Data Analysis &amp; Visualization</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Business Systems Integration</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Digital Marketing Tools</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Productivity Platforms (Google, MS 365)</li>
           </ul>
         </div>
         <!-- Innovation & Systems Design -->
         <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-accent-amber text-xl font-bold mb-4">Innovation &amp; Systems Design</h3>
+          <h3 class="accent-text text-xl font-bold mb-4">Innovation &amp; Systems Design</h3>
           <ul class="space-y-2 text-base leading-relaxed">
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Creative Problem Solving</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Process Optimization</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> UX/UI Thinking</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Gamification &amp; Engagement</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Change Management</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Creative Problem Solving</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Process Optimization</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> UX/UI Thinking</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Gamification &amp; Engagement</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Change Management</li>
           </ul>
         </div>
         <!-- Soft Skills (Executive Edge) -->
         <div class="bg-gray-900 text-gray-100 rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-accent-amber text-xl font-bold mb-4">Soft Skills <span class="text-xs font-normal">(Executive Edge)</span></h3>
+          <h3 class="accent-text text-xl font-bold mb-4">Soft Skills <span class="text-xs font-normal">(Executive Edge)</span></h3>
           <ul class="space-y-2 text-base leading-relaxed">
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Communication &amp; Influence</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Emotional Intelligence</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Adaptability</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Conflict Resolution</li>
-            <li><i class="fas fa-check text-amber-400 mr-2"></i> Client Relations</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Communication &amp; Influence</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Emotional Intelligence</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Adaptability</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Conflict Resolution</li>
+            <li><i class="fas fa-check accent-text mr-2"></i> Client Relations</li>
           </ul>
         </div>
       </div>
       <!-- Currently Learning Section -->
       <div class="mt-12">
-        <h4 class="text-orange-500 font-bold text-xl mb-4">Currently Learning</h4>
+        <h4 class="accent-text font-bold text-xl mb-4">Currently Learning</h4>
         <div class="flex flex-wrap gap-4">
           <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
             <span class="text-gray-800 font-semibold">React.js</span>
-            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+            <span class="accent-bg accent-text text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
           </div>
           <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
             <span class="text-gray-800 font-semibold">Tailwind CSS</span>
-            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+            <span class="accent-bg accent-text text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
           </div>
           <div class="bg-white rounded-lg shadow px-4 py-2 flex items-center space-x-2">
             <span class="text-gray-800 font-semibold">AI Tools</span>
-            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
+            <span class="accent-bg accent-text text-xs font-bold px-2 py-1 rounded">Leveling Up</span>
           </div>
         </div>
         <!-- Certificates Section (moved here) -->
@@ -287,26 +756,26 @@
           <!-- Button: View Live (NASA) -->
           <a href="https://tprescher.github.io/07-nasa-space-explorer/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
-        <!-- L’Oreal AI Chatbot -->
+
+        <!-- ARCHIVED PROJECT: L’Oreal AI Chatbot (kept for reference) -->
+        <!--
         <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
-          <!-- Project logo: object-contain for best fit, bg-white for contrast, border and padding for consistency -->
           <img src="img/loreal-logo.png" alt="L’Oreal AI Chatbot Logo" class="object-contain bg-white border border-gray-200 rounded-lg shadow w-48 h-32 mb-4 p-2">
           <h3 class="text-2xl font-bold text-gray-800 mb-2" style="font-family: 'Playfair Display', serif;">L’Oreal AI Chatbot</h3>
           <p class="text-gray-600 mb-4 text-center">A customer service chatbot prototype designed for beauty brand engagement using AI logic.</p>
-          <!-- View Live button for L’Oreal AI Chatbot -->
-          <!-- Button: View Live (L'Oreal) -->
           <a href="https://tprescher.github.io/08-prj-loreal-chatbot/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
-        <!-- Water Quest – Charity: Water -->
+        -->
+
+        <!-- ARCHIVED PROJECT: Water Quest – Charity: Water (kept for reference) -->
+        <!--
         <div class="group bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col items-center p-6">
-          <!-- Project logo: object-contain for best fit, bg-white for contrast, border and padding for consistency -->
           <img src="img/cw_logo_horizontal.png" alt="Water Quest – Charity: Water Logo" class="object-contain bg-white border border-gray-200 rounded-lg shadow w-48 h-32 mb-4 p-2">
           <h3 class="text-2xl font-bold text-gray-800 mb-2" style="font-family: 'Quicksand', Arial, sans-serif;">Water Quest – Charity: Water</h3>
           <p class="text-gray-600 mb-4 text-center">A gamified campaign for Charity: Water to teach users about water scarcity through play.</p>
-          <!-- View Live button for Water Quest – Charity: Water -->
-          <!-- Button: View Live (Charity: Water) -->
           <a href="https://tprescher.github.io/05-cw-game-water-quest/" target="_blank" rel="noopener" class="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg shadow transition-colors">View Live</a>
         </div>
+        -->
       </div>
     </div>
   </section>
@@ -354,5 +823,22 @@
       <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" class="w-8 h-8">
     </a>
   </footer>
+
+  <!-- Site scripts (Back-to-Top + PPD paper toggle) -->
+  <script src="script.js" defer></script>
+
+<script>
+  (function () {
+    const toggle = document.getElementById("toggle-paper");
+    const embed = document.getElementById("paper-embed");
+    if (!toggle || !embed) return;
+
+    toggle.addEventListener("click", function () {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      embed.classList.toggle("hidden");
+    });
+  })();
+</script>
 </body>
 </html>

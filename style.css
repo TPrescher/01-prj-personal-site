@@ -6,6 +6,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Hero palette tokens */
+  --ink: 2 6 23;          /* deep slate */
+  --fog: 148 163 184;     /* soft slate glow */
+  --gold: 255 214 140;    /* hero halo gold */
+  --gold-2: 255 232 170;  /* lighter gold for hover/highlights */
+
+  /* Semantic accents */
+  --accent: var(--gold);
+  --accent-hover: var(--gold-2);
+}
+
+.accent-text { color: rgb(var(--accent) / 0.95); }
+.accent-bg { background-color: rgb(var(--accent) / 0.16); }
+.accent-border { border-color: rgb(var(--accent) / 0.35); }
+.accent-glow { box-shadow: 0 0 30px rgb(var(--accent) / 0.18); }
+
 /* Set up the main body styling */
 body {
   font-family: 'Montserrat', Arial, sans-serif;
@@ -84,7 +101,7 @@ nav a:hover {
 
 /* Call to action button */
 .cta-btn {
-  background-color: #007bff;
+  background-color: rgb(var(--accent) / 0.95);
   color: white;
   padding: 12px 30px;
   text-decoration: none;
@@ -95,7 +112,7 @@ nav a:hover {
 
 /* Call to action button hover effect */
 .cta-btn:hover {
-  background-color: #0056b3;
+  background-color: rgb(var(--accent-hover) / 0.95);
 }
 
 /* General section styling */
@@ -126,7 +143,7 @@ section h2 {
   border-radius: 50%;
   margin-bottom: 1rem;
   object-fit: cover;
-  border: 4px solid #007bff;
+  border: 4px solid rgb(var(--accent) / 0.95);
 }
 
 /* About section paragraph */
@@ -169,7 +186,7 @@ section h2 {
 
 /* FontAwesome icons in skills */
 .skills-list i {
-  color: #007bff;
+  color: rgb(var(--accent) / 0.95);
   margin-right: 10px;
 }
 
@@ -212,18 +229,18 @@ section h2 {
 
 /* Project links */
 .project-link {
-  color: #007bff;
+  color: rgb(var(--accent) / 0.95);
   text-decoration: none;
   font-weight: bold;
   padding: 8px 15px;
-  border: 2px solid #007bff;
+  border: 2px solid rgb(var(--accent) / 0.95);
   border-radius: 5px;
   transition: all 0.3s;
 }
 
 /* Project link hover effect */
 .project-link:hover {
-  background-color: #007bff;
+  background-color: rgb(var(--accent) / 0.95);
   color: white;
 }
 
@@ -262,12 +279,12 @@ input, textarea {
 /* Form inputs focus effect */
 input:focus, textarea:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: rgb(var(--accent) / 0.95);
 }
 
 /* Submit button */
 button {
-  background-color: #007bff;
+  background-color: rgb(var(--accent) / 0.95);
   color: white;
   padding: 12px 30px;
   border: none;
@@ -279,7 +296,88 @@ button {
 
 /* Submit button hover effect */
 button:hover {
-  background-color: #0056b3;
+  background-color: rgb(var(--accent-hover) / 0.95);
+}
+
+/* ------------------------------------------------------------
+   Research section helper classes
+   These are used by the PPD Research section markup in index.html
+   ------------------------------------------------------------ */
+
+/* A section wrapper (keeps spacing consistent with other sections) */
+.site-section {
+  padding: 80px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main glass-like panel (dark slate + soft fog highlights) */
+.panel {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  background:
+    radial-gradient(900px 520px at 50% 30%, rgba(148, 163, 184, 0.16) 0%, rgba(2, 6, 23, 0.92) 55%, rgba(2, 6, 23, 0.98) 100%),
+    radial-gradient(700px 420px at 65% 55%, rgba(255, 214, 140, 0.10) 0%, rgba(2, 6, 23, 0) 70%),
+    rgba(2, 6, 23, 0.96);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(255, 214, 140, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* Override the global "section h2" centering for this section */
+.site-section h2 {
+  text-align: left;
+}
+
+/* Smaller glass card inside the panel */
+.card {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Muted text colors for the dark panel */
+.muted {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.subtle {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* Button styling used by both <a> and <button> */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgb(var(--accent) / 0.35);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgb(var(--accent-hover) / 0.45);
+  transform: translateY(-1px);
+}
+
+/* Link-style button used for "Open in new tab" */
+.btn-link {
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-link:hover {
+  color: rgba(255, 255, 255, 0.90);
 }
 
 /* Footer styling */

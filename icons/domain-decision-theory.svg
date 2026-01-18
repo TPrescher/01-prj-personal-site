@@ -1,0 +1,78 @@
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="dtGlow-dt" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.08)" />
+      <stop offset="55%" stop-color="rgba(214,178,94,0.10)" />
+      <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+    </radialGradient>
+
+    <filter id="dtRingGlow-dt" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.2" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          1 0 0 0 0.22
+          0 1 0 0 0.17
+          0 0 1 0 0.05
+          0 0 0 0.55 0"
+        result="goldGlow"
+      />
+      <feMerge>
+        <feMergeNode in="goldGlow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="dtGold-dt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,232,170,0.95)" />
+      <stop offset="100%" stop-color="rgba(214,178,94,0.95)" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="48" cy="48" r="40" fill="url(#dtGlow-dt)" />
+
+  <circle
+    cx="48"
+    cy="48"
+    r="38"
+    fill="none"
+    stroke="url(#dtGold-dt)"
+    stroke-width="2.6"
+    filter="url(#dtRingGlow-dt)"
+  />
+  <circle
+    cx="48"
+    cy="48"
+    r="34"
+    fill="none"
+    stroke="rgba(255,255,255,0.15)"
+    stroke-width="1.8"
+  />
+
+  <circle
+    cx="48"
+    cy="48"
+    r="15"
+    fill="none"
+    stroke="rgba(255,255,255,0.20)"
+    stroke-width="1.8"
+  />
+  <circle
+    cx="48"
+    cy="48"
+    r="7"
+    fill="none"
+    stroke="rgba(255,255,255,0.22)"
+    stroke-width="1.8"
+  />
+  <circle cx="48" cy="48" r="2.2" fill="rgba(255,255,255,0.75)" />
+
+  <path
+    d="M48 28 L57 49 L48 68 L39 47 Z"
+    fill="rgba(255,255,255,0.16)"
+    stroke="rgba(255,255,255,0.18)"
+    stroke-width="1"
+  />
+  <path d="M48 31 L55 49 L48 64 Z" fill="rgba(214,178,94,0.20)" />
+</svg>

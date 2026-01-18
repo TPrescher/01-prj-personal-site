@@ -1,0 +1,73 @@
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="mpGlow-mp" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.08)" />
+      <stop offset="55%" stop-color="rgba(214,178,94,0.10)" />
+      <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+    </radialGradient>
+
+    <filter id="mpRingGlow-mp" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.2" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          1 0 0 0 0.22
+          0 1 0 0 0.17
+          0 0 1 0 0.05
+          0 0 0 0.55 0"
+        result="goldGlow"
+      />
+      <feMerge>
+        <feMergeNode in="goldGlow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="mpGold-mp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,232,170,0.95)" />
+      <stop offset="100%" stop-color="rgba(214,178,94,0.95)" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="48" cy="48" r="40" fill="url(#mpGlow-mp)" />
+  <circle
+    cx="48"
+    cy="48"
+    r="38"
+    fill="none"
+    stroke="url(#mpGold-mp)"
+    stroke-width="2.6"
+    filter="url(#mpRingGlow-mp)"
+  />
+  <circle
+    cx="48"
+    cy="48"
+    r="34"
+    fill="none"
+    stroke="rgba(255,255,255,0.15)"
+    stroke-width="1.8"
+  />
+
+  <path d="M48 26v38" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" />
+  <path d="M34 34h28" stroke="rgba(255,255,255,0.20)" stroke-width="2" stroke-linecap="round" />
+
+  <path d="M40 34 L30 44" stroke="rgba(255,255,255,0.18)" stroke-width="1.6" stroke-linecap="round" />
+  <path d="M56 34 L66 44" stroke="rgba(255,255,255,0.18)" stroke-width="1.6" stroke-linecap="round" />
+
+  <path
+    d="M24 44 Q30 56 36 44 Z"
+    fill="rgba(255,255,255,0.08)"
+    stroke="rgba(255,255,255,0.18)"
+    stroke-width="1.4"
+  />
+  <path
+    d="M60 44 Q66 56 72 44 Z"
+    fill="rgba(214,178,94,0.10)"
+    stroke="rgba(255,255,255,0.18)"
+    stroke-width="1.4"
+  />
+
+  <path d="M36 70h24" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round" />
+  <path d="M40 70 Q48 60 56 70" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2" stroke-linecap="round" />
+</svg>

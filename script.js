@@ -1,17 +1,23 @@
 
-// Get the Back to Top button
+// ------------------------------
+// Back to Top button
+// ------------------------------
+// Grab the button from the page
 const backToTopBtn = document.getElementById('backToTop');
 
-// Show the button when the user scrolls down 200px from the top
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 200) {
-    backToTopBtn.classList.remove('hidden');
-  } else {
-    backToTopBtn.classList.add('hidden');
-  }
-});
+// Only run this code if the button exists
+if (backToTopBtn) {
+  // Show the button after the user scrolls down a bit
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 200) {
+      backToTopBtn.classList.remove('hidden');
+    } else {
+      backToTopBtn.classList.add('hidden');
+    }
+  });
 
-// When the button is clicked, scroll smoothly to the top
-backToTopBtn.addEventListener('click', function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  // Scroll smoothly back to the top when clicked
+  backToTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
